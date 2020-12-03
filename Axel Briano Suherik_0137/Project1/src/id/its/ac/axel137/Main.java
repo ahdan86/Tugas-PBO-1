@@ -11,9 +11,8 @@ public class Main {
 		
 		Square sqr = new Square(getSisi());
 		
-		JOptionPane.showMessageDialog(null, "The area of square: " + rec.getArea(), "Square shape", JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(null, "The area of square: " + sqr.getArea(), "Square shape", JOptionPane.PLAIN_MESSAGE);
 	}
-	
 	
 	public static double getPanjang() {
 		String panjang = JOptionPane.showInputDialog("Enter the lenght of rectangle");
