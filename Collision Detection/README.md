@@ -408,17 +408,4 @@ Class ini hanya berfungsi sebagai penyedia window untuk meletakan class Board ya
 
 
 ## Running Program Image
-![GitHub Logo](running.PNG)
-
-
-
-
-
-
-
-
-
-
-```java
-
-```
+![Running program image](running.PNG)
