@@ -408,7 +408,7 @@ Class ini hanya berfungsi sebagai penyedia window untuk meletakan class Board ya
 
 
 ## Running Program Image
-![GitHub Logo](running.png)
+![GitHub Logo](running.PNG)
 
 
 
