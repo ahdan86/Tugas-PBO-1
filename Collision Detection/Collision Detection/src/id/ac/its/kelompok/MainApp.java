@@ -3,9 +3,9 @@ package id.ac.its.kelompok;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 
-public class MovingSpriteEx extends JFrame{
+public class MainApp extends JFrame {
 
-    public MovingSpriteEx() {
+    public MainApp() {
 
         initUI();
     }
@@ -25,7 +25,7 @@ public class MovingSpriteEx extends JFrame{
     public static void main(String[] args) {
 
         EventQueue.invokeLater(() -> {
-            MovingSpriteEx ex = new MovingSpriteEx();
+            MainApp ex = new MainApp();
             ex.setVisible(true);
         });
     }

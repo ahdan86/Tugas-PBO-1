@@ -27,20 +27,11 @@ public class SpaceShip extends Sprite {
     }
 
     public void move() {
-
-        if(y + dy + height > 300){
-            y = y;
-        }else if (y + dy < 0){
-            y = y;
-        }else {
+        if (!(y + dy < 0) && !(y + dy + height > 260)){
             y += dy;
         }
 
-        if(x + dx + width > 400){
-            x = x;
-        }else if (x + dx < 0){
-            x = x;
-        }else {
+        if(!(x + dx + width > 380) && !(x + dx < 0)){
             x += dx;
         }
     }
