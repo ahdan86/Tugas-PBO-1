@@ -405,7 +405,7 @@ Class ini digunakan sebagai eventListener pada program ini.
 Class ini hanya berfungsi sebagai penyedia window untuk meletakan class Board yang telah kita buat.
 
 ## Class Diagram
-
+![Diagram Image](Diagram.png)
 
 ## Running Program Image
 ![Running program image](running.PNG)
