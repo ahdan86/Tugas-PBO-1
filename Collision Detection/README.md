@@ -86,7 +86,8 @@ public void fire() {
 Fungsi fire akan menambah object Missile ke `List<Missile> missiles` pada Class SpaceShip yang akan dipanggil ketika user menekan spacebar pada keyboard.
 
 * `keyPressed() keyReleased()`
-```javapublic void keyPressed(KeyEvent e) {
+```java
+public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_SPACE) {
