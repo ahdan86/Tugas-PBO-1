@@ -72,5 +72,5 @@ Diberi batasan dalam method `mouseMoved()` agar saat mouse keluar dari frame yan
 ![Gambar class diagram](CollisionDetectionWithMouse_Diagram.PNG)
 
 ## Link Youtube Video
-![Rekaman Running Program](Video_Project_PBO_E_Collision_Detection_with_Mouse.gif)
+![Rekaman Running Program](Video_Project_PBO_E_Collision_Detection_with_Mouse.gif)\
 [Link Video Youtube](https://youtu.be/rVPB4Y_WzrE) 
