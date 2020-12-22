@@ -32,7 +32,7 @@ private void initBoard() {
 ```
 Mouse motion listener dipakai disini untuk mendapatkan input dari event mouse yang terjadi di dalam frame.
 
-`MouseHandler()` adalah objek/class baru yang dibuat untuk mengimplementasikan interface `MouseMotionListener`. Isi dari class `MouseMotionListener` :
+`MouseHandler()` adalah objek/class baru yang dibuat untuk mengimplementasikan interface `MouseMotionListener`. Isi dari class `MouseHandler()` :
 *  `MouseHandler()`   
 ```java
 private class MouseHandler implements MouseMotionListener {	
@@ -71,3 +71,5 @@ Diberi batasan dalam method `mouseMoved()` agar saat mouse keluar dari frame yan
 ## Class Diagram
 
 ## Link Youtube Video
+![Rekaman Running Program](Video_Project_PBO_E_Collision_Detection_with_Mouse.gif)
+[Link Video Youtube](https://youtu.be/rVPB4Y_WzrE) 
