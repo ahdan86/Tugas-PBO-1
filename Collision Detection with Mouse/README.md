@@ -69,6 +69,7 @@ Koordinat x dan y dari Sprite SpaceShip akan diupdate sesuai dengan koordinat mo
 Diberi batasan dalam method `mouseMoved()` agar saat mouse keluar dari frame yang telah dibatasi Sprite SpaceShip tidak terupdate koordinatnya sehingga akan "menempel" di dinding frame (Koordinat x dan y terakhir mouse di frame). 
 
 ## Class Diagram
+![Gambar class diagram](CollisionDetectionWithMouse_Diagram.PNG)
 
 ## Link Youtube Video
 ![Rekaman Running Program](Video_Project_PBO_E_Collision_Detection_with_Mouse.gif)
