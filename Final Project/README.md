@@ -23,6 +23,7 @@ Class ini digunakan sebagai Main Class yang mengatur besar width/hight dari wind
   - Untuk melihat lihat high score dan memilih mode game
 - Credit screen
 
-
+## Diagram (Sementara)
+![Gambar Diagram](DiagramFPSementara.png)
 ## Link Referensi
 [Link Referensi Pembuatan Game Tetris](https://www.youtube.com/watch?v=_U0Io6Utf98&list=PLOgQJY7VjpBRpszgw5PfuJlOUQgIVMz5c)
