@@ -22,10 +22,13 @@ public class Title extends JPanel implements KeyListener {
 	private WindowGame window;
 	private BufferedImage[] playButton = new BufferedImage[2];
 	private Timer timer;
+
+	private boolean inTitle = true;
 	
 	
 	public Title(WindowGame window){
-                instructions = ImageLoader.loadImage("/arrow.png");
+
+		instructions = ImageLoader.loadImage("/arrow.png");
 		timer = new Timer(1000/60, new ActionListener(){
 
 			@Override
@@ -34,6 +37,7 @@ public class Title extends JPanel implements KeyListener {
 			}
 			
 		});
+
 		timer.start();
 		this.window = window;
 		
@@ -59,12 +63,21 @@ public class Title extends JPanel implements KeyListener {
 	}	
 
     public void keyTyped(KeyEvent e) {
-        if(e.getKeyChar() == KeyEvent.VK_SPACE) {
+        if(e.getKeyChar() == KeyEvent.VK_SPACE && isInTitle()) {
             window.startTetris();
+            setInTitle();
         }
     }
 
     public void keyPressed(KeyEvent e) {}
 
     public void keyReleased(KeyEvent e) {}
+
+    public void setInTitle() {
+		inTitle = !inTitle;
+	}
+
+	public boolean isInTitle() {
+		return inTitle;
+	}
 }

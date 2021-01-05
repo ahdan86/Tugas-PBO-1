@@ -2,6 +2,7 @@ package id.ac.its.kelompok;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.OutputStream;
 
 public class Shape {
 	private Color color;
@@ -10,7 +11,7 @@ public class Shape {
 
     private long time, lastTime;
 
-    private int normal = 600, fast = 50;
+    public static int normal = 600, fast = 50;
 
     private int delay;
 
@@ -59,7 +60,6 @@ public class Shape {
                 }
             }
             checkLine();
-            board.addScore();
             board.setCurrentShape();
             timePassedFromCollision = -1;
         }
@@ -142,19 +142,35 @@ public class Shape {
 
     private void checkLine() {
         int size = board.getBoard().length - 1;
+        int lineCleared = 0;
 
         for (int i = board.getBoard().length - 1; i > 0; i--) {
             int count = 0;
+
             for (int j = 0; j < board.getBoard()[0].length; j++) {
                 if (board.getBoard()[i][j] != null) {
                     count++;
+//                    System.out.println("count bertambah");
                 }
 
                 board.getBoard()[size][j] = board.getBoard()[i][j];
+//                System.out.println("size: " + size + "\nj: " + j);
             }
+
             if (count < board.getBoard()[0].length) {
                 size--;
+            } else {
+                lineCleared++;
             }
+        }
+        board.addScore(lineCleared);
+        Board.lineCleared += lineCleared;
+        System.out.println("\ntotal line cleared: " + Board.lineCleared);
+        if (Board.lineCleared/4 > Board.treeshold) {
+            Board.treeshold++;
+            Board.normal -= (int) 100/Board.treeshold;
+            System.out.println("\ntreeshold: " + Board.treeshold);
+            System.out.println("\nnormal: " + Board.normal);
         }
     }
 

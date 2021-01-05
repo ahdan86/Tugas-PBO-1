@@ -75,10 +75,16 @@ public class Board extends JPanel implements KeyListener, MouseListener, MouseMo
 	// score
     private int score = 0;
 
+    public static int lineCleared = 0;
+
+    public static int treeshold = 0;
+
+    public static int normal = 600;
+
     public Board() {
 
-        pause = ImageLoader.loadImage("pause.png");
-        refresh = ImageLoader.loadImage("refresh.png");
+        pause = ImageLoader.loadImage("/pause.png");
+        refresh = ImageLoader.loadImage("/refresh.png");
 
         mouseX = 0;
         mouseY = 0;
@@ -215,6 +221,7 @@ public class Board extends JPanel implements KeyListener, MouseListener, MouseMo
         int index = random.nextInt(shapes.length);
         int colorIndex = random.nextInt(colors.length);
         nextShape = new Shape(shapes[index].getCoords(), this, colors[colorIndex]);
+        nextShape.normal = Board.normal;
     }
 
     public void setCurrentShape() {
@@ -239,7 +246,7 @@ public class Board extends JPanel implements KeyListener, MouseListener, MouseMo
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
+        if (e.getKeyCode() == KeyEvent.VK_UP && !gamePaused) {
             currentShape.rotateShape();
         }
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
@@ -336,8 +343,18 @@ public class Board extends JPanel implements KeyListener, MouseListener, MouseMo
 
     }
 
-    public void addScore() {
-        score++;
+    public void addScore(int lineCleared) {
+        int plus = lineCleared * 100;
+
+        if(lineCleared == 2) {
+            plus = (int) (plus * 1.1);
+        } else if (lineCleared == 3) {
+            plus = (int) (plus * 1.3);
+        } else if (lineCleared == 4) {
+            plus = (int) (plus * 1.6);
+        }
+
+        score += plus;
     }
 
 }
