@@ -10,7 +10,7 @@ Class ini digunakan untuk menampung/create bentuk-bentuk balok yang akan dirando
 ### ImageLoader
 Class ini digunakan untuk load gambar yang diperlukan nantinya oleh class lain dan ditampilkan di board dan juga melemparkan exeption jika load gambar gagal.
 ### SceneManager
-Class ini digunakan untuk mengatur scene-scene seperti `MainMenu`, `LevelSelector`,`GamwOver`,dan `Credit`.
+Class ini digunakan untuk mengatur scene-scene seperti `MainMenu`, `LevelSelector`,`GameOver`,dan `Credit`.
 ### WindowGame
 Class ini digunakan sebagai Main Class yang mengatur besar width/hight dari window game dan inisialisasi objek yang akan digunakan.
 
