@@ -69,7 +69,7 @@ public class MainMenu extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
 //			Main.sfx.ok.playbackMusic();
-            if (e.getActionCommand().equals("Start Game")) {
+            if (e.getActionCommand().equals("Classic")) {
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(playClassic.getParent());
                 frame.setContentPane(new BoardClassic(frame));
                 frame.setFocusable(true);
