@@ -2,7 +2,6 @@ package id.ac.its.kelompok;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.io.OutputStream;
 
 public class Shape {
 	private Color color;
@@ -21,15 +20,15 @@ public class Shape {
 
     private int deltaX;
 
-    private Board board;
+    private BoardClassic boardClassic;
 
     private boolean collision = false, moveX = false;
 
     private int timePassedFromCollision = -1;
 
-    public Shape(int[][] coords, Board board, Color color) {
+    public Shape(int[][] coords, BoardClassic boardClassic, Color color) {
         this.coords = coords;
-        this.board = board;
+        this.boardClassic = boardClassic;
         this.color = color;
         deltaX = 0;
         x = 4;
@@ -55,12 +54,12 @@ public class Shape {
             for (int row = 0; row < coords.length; row++) {
                 for (int col = 0; col < coords[0].length; col++) {
                     if (coords[row][col] != 0) {
-                        board.getBoard()[y + row][x + col] = color;
+                        boardClassic.getBoard()[y + row][x + col] = color;
                     }
                 }
             }
             checkLine();
-            board.setCurrentShape();
+            boardClassic.setCurrentShape();
             timePassedFromCollision = -1;
         }
 
@@ -70,7 +69,7 @@ public class Shape {
             for (int row = 0; row < coords.length; row++) {
                 for (int col = 0; col < coords[row].length; col++) {
                     if (coords[row][col] != 0) {
-                        if (board.getBoard()[y + row][x + deltaX + col] != null) {
+                        if (boardClassic.getBoard()[y + row][x + deltaX + col] != null) {
                             moveX = false;
                         }
 
@@ -92,7 +91,7 @@ public class Shape {
                     for (int col = 0; col < coords[row].length; col++) {
                         if (coords[row][col] != 0) {
 
-                            if (board.getBoard()[y + 1 + row][x + col] != null) {
+                            if (boardClassic.getBoard()[y + 1 + row][x + col] != null) {
                                 collision();
                             }
                         }
@@ -123,7 +122,7 @@ public class Shape {
         for (int row = 0; row < coords.length; row++) {
             for (int col = 0; col < coords[0].length; col++) {
                 if (coords[row][col] != 0) {
-                    g.fillRect(col * 30 + x * 30, row * 30 + y * 30, Board.blockSize, Board.blockSize);
+                    g.fillRect(col * 30 + x * 30, row * 30 + y * 30, BoardClassic.blockSize, BoardClassic.blockSize);
                 }
             }
         }
@@ -141,36 +140,36 @@ public class Shape {
     }
 
     private void checkLine() {
-        int size = board.getBoard().length - 1;
+        int size = boardClassic.getBoard().length - 1;
         int lineCleared = 0;
 
-        for (int i = board.getBoard().length - 1; i > 0; i--) {
+        for (int i = boardClassic.getBoard().length - 1; i > 0; i--) {
             int count = 0;
 
-            for (int j = 0; j < board.getBoard()[0].length; j++) {
-                if (board.getBoard()[i][j] != null) {
+            for (int j = 0; j < boardClassic.getBoard()[0].length; j++) {
+                if (boardClassic.getBoard()[i][j] != null) {
                     count++;
 //                    System.out.println("count bertambah");
                 }
 
-                board.getBoard()[size][j] = board.getBoard()[i][j];
+                boardClassic.getBoard()[size][j] = boardClassic.getBoard()[i][j];
 //                System.out.println("size: " + size + "\nj: " + j);
             }
 
-            if (count < board.getBoard()[0].length) {
+            if (count < boardClassic.getBoard()[0].length) {
                 size--;
             } else {
                 lineCleared++;
             }
         }
-        board.addScore(lineCleared);
-        Board.lineCleared += lineCleared;
-        System.out.println("\ntotal line cleared: " + Board.lineCleared);
-        if (Board.lineCleared/4 > Board.treeshold) {
-            Board.treeshold++;
-            Board.normal -= (int) 100/Board.treeshold;
-            System.out.println("\ntreeshold: " + Board.treeshold);
-            System.out.println("\nnormal: " + Board.normal);
+        boardClassic.addScore(lineCleared);
+        BoardClassic.lineCleared += lineCleared;
+        System.out.println("\ntotal line cleared: " + BoardClassic.lineCleared);
+        if (BoardClassic.lineCleared/4 > BoardClassic.treeshold) {
+            BoardClassic.treeshold++;
+            BoardClassic.normal -= (int) 100/ BoardClassic.treeshold;
+            System.out.println("\ntreeshold: " + BoardClassic.treeshold);
+            System.out.println("\nnormal: " + BoardClassic.normal);
         }
     }
 
@@ -189,7 +188,7 @@ public class Shape {
         for (int row = 0; row < rotatedShape.length; row++) {
             for (int col = 0; col < rotatedShape[row].length; col++) {
                 if (rotatedShape[row][col] != 0) {
-                    if (board.getBoard()[y + row][x + col] != null) {
+                    if (boardClassic.getBoard()[y + row][x + col] != null) {
                         return;
                     }
                 }
