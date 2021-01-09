@@ -11,7 +11,9 @@ public class MainMenu extends JPanel {
 
     private int areaWidth;
     private int areaHeight;
-    private final JButton play = new JButton("Start Game");
+    private final JButton playClassic = new JButton("Classic");
+    private final JButton playZen = new JButton("Zen");
+    private final JButton playChallenge = new JButton("Challenge");
     private final JButton score = new JButton("Score");
     private final JButton credits = new JButton("Credits");
     private final JButton exit = new JButton("Exit");
@@ -26,24 +28,30 @@ public class MainMenu extends JPanel {
         this.setPreferredSize(new Dimension(areaWidth, areaHeight));
         setLayout(null);
 
-        play.setBounds(((areaWidth/2) - (wButton/2)), 273, wButton, hButton);
+        playClassic.setBounds(((areaWidth/2) - (wButton/2)), 133, wButton, hButton);
+        playZen.setBounds(((areaWidth/2) - (wButton/2)), 203, wButton, hButton);
+        playChallenge.setBounds(((areaWidth/2) - (wButton/2)), 273, wButton, hButton);
         score.setBounds(((areaWidth/2) - (wButton/2)), 343, wButton, hButton);
         credits.setBounds(((areaWidth/2) - (wButton/2)), 413, wButton, hButton);
         exit.setBounds(((areaWidth/2) - (wButton/2)), 483, wButton, hButton);
 
-        this.add(play);
+        this.add(playClassic);
+        this.add(playZen);
+        this.add(playChallenge);
         this.add(score);
         this.add(credits);
         this.add(exit);
 
         // adding action listener
         ButtonHandler handler = new ButtonHandler();
-        play.addActionListener(handler);
+        playClassic.addActionListener(handler);
         score.addActionListener(handler);
         credits.addActionListener(handler);
         exit.addActionListener(handler);
 
-        setHover(play);
+        setHover(playClassic);
+        setHover(playZen);
+        setHover(playChallenge);
         setHover(score);
         setHover(credits);
         setHover(exit);
@@ -61,8 +69,8 @@ public class MainMenu extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
 //			Main.sfx.ok.playbackMusic();
-            if(e.getActionCommand().equals("Start Game")) {
-                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(play.getParent());
+            if (e.getActionCommand().equals("Start Game")) {
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(playClassic.getParent());
                 frame.setContentPane(new BoardClassic(frame));
                 frame.setFocusable(true);
                 frame.revalidate();
