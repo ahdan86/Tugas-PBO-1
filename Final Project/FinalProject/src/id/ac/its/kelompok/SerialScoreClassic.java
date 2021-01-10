@@ -29,7 +29,14 @@ public class SerialScoreClassic{
 
     public static void addRecords()
     {
-
+        try
+        {
+            ScoreClassic record = new ScoreClassic(ScoreClassic.getNama(),ScoreClassic.getScore());
+            output.writeObject(record);
+        }
+        catch(IOException ioException){
+            System.err.println("Error writing file. Terminating");
+        }
     }
 
     public static void closeFile()

@@ -2,21 +2,21 @@ package id.ac.its.kelompok;
 
 import java.io.Serializable;
 
-public class ScoreClassic implements Serializable {
-    private String nama;
-    private int score;
+public class ScoreClassic implements Serializable 
+{
+    private static String nama;
+    private static int score;
 
-    public ScoreClassic(){
-        this("",0);
+    public ScoreClassic() {
+        this("", 0);
     }
 
-    public ScoreClassic(String nama, int score)
-    {
+    public ScoreClassic(String nama, int score) {
         this.nama = nama;
         this.score = score;
     }
 
-    public String getNama() {
+    public static String getNama() {
         return nama;
     }
 
@@ -24,7 +24,7 @@ public class ScoreClassic implements Serializable {
         this.nama = nama;
     }
 
-    public int getScore() {
+    public static int getScore() {
         return score;
     }
 
