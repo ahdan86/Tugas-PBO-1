@@ -7,12 +7,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class ReadSerialScoreClassic {
-    private static ObjectInputStream input;
-    public static void main(String[] args) {
-        
-    }
-
-    public static void openFile()
+	private static ObjectInputStream input;
+	public static int highscore;
+    
+	public static void openFile()
     {
         try {
 			input = new ObjectInputStream(
@@ -27,7 +25,8 @@ public class ReadSerialScoreClassic {
     {
         try
         {
-            ScoreClassic record = (ScoreClassic) input.readObject();
+        	ScoreClassic record = (ScoreClassic) input.readObject();
+            highscore = record.getScore();
         }
         
         catch (EOFException endOfFileException) {
@@ -52,4 +51,9 @@ public class ReadSerialScoreClassic {
 			System.exit(1);
 		}
 	}
+    
+    public static int getScore()
+    {
+    	return highscore;
+    }
 }

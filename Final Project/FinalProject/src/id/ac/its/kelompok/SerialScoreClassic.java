@@ -8,13 +8,6 @@ import java.io.IOException;
 public class SerialScoreClassic{
     private static ObjectOutputStream output;
 
-    public static void main (String[] args)
-    {
-        openFile();
-        addRecords();
-        closeFile();
-    }
-
     public static void openFile()
     {
         try {
@@ -27,13 +20,15 @@ public class SerialScoreClassic{
         }
     }
 
-    public static void addRecords()
+    public static void addRecords(ScoreClassic record)
     {
         try
         {
-            ScoreClassic record = new ScoreClassic(ScoreClassic.getNama(),ScoreClassic.getScore());
+            System.out.println("Masuk add records %n");
             output.writeObject(record);
+            System.out.println("Add records success %n");
         }
+        
         catch(IOException ioException){
             System.err.println("Error writing file. Terminating");
         }

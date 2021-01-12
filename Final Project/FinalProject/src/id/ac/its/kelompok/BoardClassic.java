@@ -90,8 +90,6 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
         startGame();
     }
 
-
-
     private void update() {
 
         if (gamePaused || gameOver) {
@@ -153,6 +151,27 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
         pauseButton.repaint();
     }
 
+    public void gameOvered()
+    {
+        if(gameOver){ 
+            ReadSerialScoreClassic.openFile();
+        	ReadSerialScoreClassic.readRecords();
+        	if(getScore() > ReadSerialScoreClassic.getScore())
+        	{
+        		String nama = JOptionPane.showInputDialog("Masukkan Nama");
+                ScoreClassic record = new ScoreClassic(nama,getScore());
+                SerialScoreClassic.openFile();
+                SerialScoreClassic.addRecords(record);
+                // SerialScoreClassic.closeFile();
+        	}
+        }
+    }
+
+    public int getScore()
+    {
+        return score;
+    }
+
     public void setNextShape() {
         int index = random.nextInt(shapes.length);
         int colorIndex = random.nextInt(colors.length);
@@ -169,11 +188,12 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
                 if (currentShape.getCoords()[row][col] != 0) {
                     if (board[currentShape.getY() + row][currentShape.getX() + col] != null) {
                         gameOver = true;
+                        gameOvered();
+                        break;
                     }
                 }
             }
         }
-
     }
 
     public Color[][] getBoard() {
@@ -228,7 +248,6 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
         setCurrentShape();
         gameOver = false;
         looper.start();
-
     }
 
     public void stopGame() {

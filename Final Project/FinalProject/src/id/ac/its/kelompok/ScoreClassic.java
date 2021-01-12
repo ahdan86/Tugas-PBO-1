@@ -16,7 +16,7 @@ public class ScoreClassic implements Serializable
         this.score = score;
     }
 
-    public static String getNama() {
+    public String getNama() {
         return nama;
     }
 
@@ -24,11 +24,13 @@ public class ScoreClassic implements Serializable
         this.nama = nama;
     }
 
-    public static int getScore() {
+    public int getScore() {
         return score;
     }
 
     public void setScore(int score) {
         this.score = score;
     }
+
+    
 }
