@@ -31,6 +31,8 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
 
     // score
     private int score = 0;
+    private int highScore;
+    private String highScoreName;
     public static int lineCleared = 0;
     public static int treeshold = 0;
     public static int normal = 600;
@@ -85,6 +87,18 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
 
         pauseDialog = new PauseMenu(frame, this, pauseButton);
 
+        if(ReadSerialScoreClassic.openFile())
+        {
+            ReadSerialScoreClassic.readRecords();
+            highScore = ReadSerialScoreClassic.getScore();
+            highScoreName = ReadSerialScoreClassic.getNama();
+        }
+        else {
+            highScore = 0;
+            highScoreName = "-";
+        }
+        System.out.print(highScore);
+
         looper = new Timer(delay, new GameLooper());
         addKeyListener(this);
         startGame();
@@ -123,6 +137,7 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
                 }
             }
         }
+        
         if (gameOver) {
             String gameOverString = "GAME OVER";
             g.setColor(Color.WHITE);
@@ -132,6 +147,8 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
         g.setColor(Color.WHITE);
 
         g.setFont(new Font("Georgia", Font.BOLD, 20));
+
+        g.drawString("HighScore: " + highScoreName + " " + highScore, WindowGame.WIDTH - 250, WindowGame.HEIGHT / 2 - 30);
 
         g.drawString("SCORE", WindowGame.WIDTH - 125, WindowGame.HEIGHT / 2);
         g.drawString(score + "", WindowGame.WIDTH - 125, WindowGame.HEIGHT / 2 + 30);
@@ -154,14 +171,13 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
     public void gameOvered()
     {
         if(gameOver){ 
-            ReadSerialScoreClassic.openFile();
-        	ReadSerialScoreClassic.readRecords();
-        	if(getScore() > ReadSerialScoreClassic.getScore())
+        	if(getScore() > highScore)
         	{
-        		String nama = JOptionPane.showInputDialog("Masukkan Nama");
-                ScoreClassic record = new ScoreClassic(nama,getScore());
+                String nama = JOptionPane.showInputDialog("Masukkan Nama");
+                
                 SerialScoreClassic.openFile();
-                SerialScoreClassic.addRecords(record);
+                SerialScoreClassic.addRecords(nama,getScore());
+                highScore = getScore();
                 // SerialScoreClassic.closeFile();
         	}
         }

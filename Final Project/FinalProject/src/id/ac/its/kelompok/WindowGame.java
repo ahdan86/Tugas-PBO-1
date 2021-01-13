@@ -12,7 +12,6 @@ public class WindowGame {
 
     public WindowGame() {
 
-
     }
 
     public void startTetris() {

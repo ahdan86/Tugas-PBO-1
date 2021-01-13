@@ -20,10 +20,12 @@ public class SerialScoreClassic{
         }
     }
 
-    public static void addRecords(ScoreClassic record)
+    public static void addRecords(String nama,int score)
     {
         try
         {
+            ScoreClassic record = new ScoreClassic(nama,score);
+            System.out.print(record.getScore());
             System.out.println("Masuk add records %n");
             output.writeObject(record);
             System.out.println("Add records success %n");

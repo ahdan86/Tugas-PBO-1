@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class ScoreClassic implements Serializable 
 {
-    private static String nama;
-    private static int score;
+    private String nama;
+    private int score;
 
     public ScoreClassic() {
         this("", 0);

@@ -9,15 +9,17 @@ import java.nio.file.Paths;
 public class ReadSerialScoreClassic {
 	private static ObjectInputStream input;
 	public static int highscore;
+	public static String nama;
     
-	public static void openFile()
+	public static boolean openFile()
     {
         try {
 			input = new ObjectInputStream(
 					Files.newInputStream(Paths.get("ScoreClassic.ser")));
+			return true;
 		} catch (IOException ioException) {
 			System.err.println("Error opening file");
-			System.exit(1);
+			return false;
 		}
     }
 
@@ -26,7 +28,9 @@ public class ReadSerialScoreClassic {
         try
         {
         	ScoreClassic record = (ScoreClassic) input.readObject();
-            highscore = record.getScore();
+			highscore = record.getScore();
+			nama = record.getNama();
+			System.out.print(highscore);
         }
         
         catch (EOFException endOfFileException) {
@@ -55,5 +59,10 @@ public class ReadSerialScoreClassic {
     public static int getScore()
     {
     	return highscore;
-    }
+	}
+	
+	public static String getNama()
+	{
+		return nama;
+	}
 }
