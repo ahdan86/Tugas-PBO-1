@@ -10,7 +10,7 @@ public class ShapeZen {
 
     private long time, lastTime;
 
-    public static int normal = 600, fast = 50;
+    public static int normal = 500, fast = 50;
 
     private int delay;
 
@@ -126,17 +126,6 @@ public class ShapeZen {
                 }
             }
         }
-
-//        for (int row = 0; row < reference.length; row++) {
-//            for (int col = 0; col < reference[0].length; col++) {
-//                if (reference[row][col] != 0) {
-//                    g.fillRect(col * 30 + 320, row * 30 + 160, Board.blockSize, Board.blockSize);
-//                }
-//
-//            }
-//
-//        }
-
     }
 
     private void checkLine() {

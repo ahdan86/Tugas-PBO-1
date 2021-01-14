@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class PauseMenu extends JDialog {
+public class PauseMenuClassic extends JDialog {
 
     private final int areaWidth = 272;
     private final int areaHeight = 340;
@@ -22,7 +22,7 @@ public class PauseMenu extends JDialog {
     private final JFrame frame;
     private final BoardClassic board;
 
-    public PauseMenu(JFrame owner, BoardClassic board, JButton pauseButton) {
+    public PauseMenuClassic(JFrame owner, BoardClassic board, JButton pauseButton) {
         super(owner, true);
         this.frame = owner;
         this.board = board;
@@ -86,7 +86,7 @@ public class PauseMenu extends JDialog {
 //			Main.sfx.ok.playbackMusic();
             if (e.getActionCommand().equals("Resume")) {
                 try {
-                    PauseMenu dialog = (PauseMenu) SwingUtilities.getWindowAncestor(resume.getParent());
+                    PauseMenuClassic dialog = (PauseMenuClassic) SwingUtilities.getWindowAncestor(resume.getParent());
                     pauseButton.setText("Pause");
 
                     dialog.unpause();
@@ -116,7 +116,6 @@ public class PauseMenu extends JDialog {
     private void setHover(JButton button) {
         button.addMouseListener(new MouseAdapter() {
             public void mouseEntered(MouseEvent e) {
-//				Main.sfx.cursor.playbackMusic();
                 button.setBackground(new Color(244, 179, 80));
             }
 

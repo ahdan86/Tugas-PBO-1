@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.*;
-import java.util.List;
 import java.util.Random;
 
 import javax.swing.*;
@@ -26,7 +25,7 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
     private boolean gamePaused = false;
     private boolean gameOver = false;
     private JButton pauseButton = new JButton("Pause");
-    private PauseMenu pauseDialog;
+    private PauseMenuClassic pauseDialog;
 
     // score
     private int score = 0;
@@ -86,7 +85,7 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
         setPauseAction(pauseButton);
         this.add(pauseButton);
 
-        pauseDialog = new PauseMenu(frame, this, pauseButton);
+        pauseDialog = new PauseMenuClassic(frame, this,pauseButton);
 
         if(ReadSerialScoreClassic.openFile())
         {

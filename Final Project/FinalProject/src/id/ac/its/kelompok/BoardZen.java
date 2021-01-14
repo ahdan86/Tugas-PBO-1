@@ -23,13 +23,12 @@ public class BoardZen extends JPanel implements KeyListener, MouseListener, Mous
     private boolean gamePaused = false;
     private boolean gameOver = false;
     private JButton pauseButton = new JButton("Pause");
-    private PauseMenu pauseDialog;
+    private PauseMenuZen pauseDialog;
 
     // score
     private int score = 0;
     private int highScore;
     private String highScoreName;
-    public static int normal = 600;
 
     private Color[] colors = {Color.decode("#ed1c24"), Color.decode("#ff7f27"), Color.decode("#fff200"),
             Color.decode("#22b14c"), Color.decode("#00a2e8"), Color.decode("#a349a4"), Color.decode("#3f48cc")};
@@ -79,7 +78,7 @@ public class BoardZen extends JPanel implements KeyListener, MouseListener, Mous
         setPauseAction(pauseButton);
         this.add(pauseButton);
 
-//        pauseDialog = new PauseMenu(frame, new BoardClassic(), pauseButton);
+        pauseDialog = new PauseMenuZen(frame, this, pauseButton);
 
         if(ReadSerialScoreClassic.openFile()) {
             ReadSerialScoreClassic.readRecords();
@@ -181,7 +180,6 @@ public class BoardZen extends JPanel implements KeyListener, MouseListener, Mous
         int index = random.nextInt(ShapeZens.length);
         int colorIndex = random.nextInt(colors.length);
         nextShapeZen = new ShapeZen(ShapeZens[index].getCoords(), this, colors[colorIndex]);
-        nextShapeZen.normal = BoardZen.normal;
     }
 
     public void setCurrentShape() {
