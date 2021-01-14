@@ -3,7 +3,7 @@ package id.ac.its.kelompok;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Shape {
+public class ShapeClassic {
 	private Color color;
 
     private int x, y;
@@ -26,7 +26,7 @@ public class Shape {
 
     private int timePassedFromCollision = -1;
 
-    public Shape(int[][] coords, BoardClassic boardClassic, Color color) {
+    public ShapeClassic(int[][] coords, BoardClassic boardClassic, Color color) {
         this.coords = coords;
         this.boardClassic = boardClassic;
         this.color = color;
@@ -126,17 +126,6 @@ public class Shape {
                 }
             }
         }
-
-//        for (int row = 0; row < reference.length; row++) {
-//            for (int col = 0; col < reference[0].length; col++) {
-//                if (reference[row][col] != 0) {
-//                    g.fillRect(col * 30 + 320, row * 30 + 160, Board.blockSize, Board.blockSize);
-//                }
-//
-//            }
-//
-//        }
-
     }
 
     private void checkLine() {
@@ -149,11 +138,9 @@ public class Shape {
             for (int j = 0; j < boardClassic.getBoard()[0].length; j++) {
                 if (boardClassic.getBoard()[i][j] != null) {
                     count++;
-//                    System.out.println("count bertambah");
                 }
 
                 boardClassic.getBoard()[size][j] = boardClassic.getBoard()[i][j];
-//                System.out.println("size: " + size + "\nj: " + j);
             }
 
             if (count < boardClassic.getBoard()[0].length) {
@@ -165,11 +152,13 @@ public class Shape {
         boardClassic.addScore(lineCleared);
         BoardClassic.lineCleared += lineCleared;
         System.out.println("\ntotal line cleared: " + BoardClassic.lineCleared);
-        if (BoardClassic.lineCleared/4 > BoardClassic.treeshold) {
+        if (BoardClassic.lineCleared/6 > BoardClassic.treeshold) {
             BoardClassic.treeshold++;
-            BoardClassic.normal -= (int) 100/ BoardClassic.treeshold;
+            if ( BoardClassic.treeshold < BoardClassic.speed.length) {
+                BoardClassic.normal = BoardClassic.speed[BoardClassic.treeshold];
+            }
             System.out.println("\ntreeshold: " + BoardClassic.treeshold);
-            System.out.println("\nnormal: " + BoardClassic.normal);
+            System.out.println("\nnormal: " + ShapeClassic.normal);
         }
     }
 

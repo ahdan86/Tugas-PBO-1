@@ -63,6 +63,7 @@ public class PauseMenu extends JDialog {
     public void showDialog() {
         this.pack();
         this.setLocationRelativeTo(this.board);
+
         pauseButton.setBackground(UIManager.getColor("control"));
         board.setEnabled(false);
         this.setVisible(true);

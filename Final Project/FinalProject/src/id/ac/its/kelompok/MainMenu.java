@@ -45,6 +45,8 @@ public class MainMenu extends JPanel {
         // adding action listener
         ButtonHandler handler = new ButtonHandler();
         playClassic.addActionListener(handler);
+        playZen.addActionListener(handler);
+        playChallenge.addActionListener(handler);
         score.addActionListener(handler);
         credits.addActionListener(handler);
         exit.addActionListener(handler);
@@ -65,39 +67,49 @@ public class MainMenu extends JPanel {
     }
 
     public class ButtonHandler implements ActionListener {
-
         @Override
         public void actionPerformed(ActionEvent e) {
-//			Main.sfx.ok.playbackMusic();
-            if (e.getActionCommand().equals("Classic")) {
-                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(playClassic.getParent());
-                frame.setContentPane(new BoardClassic(frame));
-                frame.setFocusable(true);
-                frame.revalidate();
-                frame.getContentPane().requestFocus();
-                frame.getContentPane().setFocusable(true);
-            }
+            switch (e.getActionCommand()) {
+                case "Classic": {
+                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(playClassic.getParent());
+                    frame.setContentPane(new BoardClassic(frame));
+                    frame.setFocusable(true);
+                    frame.revalidate();
+                    frame.getContentPane().requestFocus();
+                    frame.getContentPane().setFocusable(true);
+                    break;
+                }
+                case "Zen": {
+                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(playZen.getParent());
 
-            else if(e.getActionCommand().equals("Score")) {
-                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(score.getParent());
+                    frame.setContentPane(new BoardZen(frame));
+                    frame.setFocusable(true);
+                    frame.revalidate();
+                    frame.getContentPane().requestFocus();
+                    frame.getContentPane().setFocusable(true);
+                    break;
+                }
+                case "Score": {
+                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(score.getParent());
 
-                frame.setContentPane(new BoardClassic(frame));
-                frame.revalidate();
-            }
-
-            else if(e.getActionCommand().equals("Credits")) {
-                //show Credits
-                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(credits.getParent());
-                JOptionPane.showMessageDialog(frame, "Axel");
-            }
-            else if(e.getActionCommand().equals("Exit")) {
-                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(exit.getParent());
-                int choose = JOptionPane.showConfirmDialog(frame, "Do you really want to exit the application?",
-                        "Confirm Close", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-                if(choose == JOptionPane.YES_OPTION) {
-                    frame.dispose();
-                } else {
-                    frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                    break;
+                }
+                case "Credits": {
+                    //show Credits
+                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(credits.getParent());
+                    JOptionPane.showMessageDialog(frame, "Axel");
+                    break;
+                }
+                case "Exit": {
+                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(exit.getParent());
+                    int choose = JOptionPane.showConfirmDialog(frame, "Do you really want to exit the application?",
+                            "Confirm Close", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    if (choose == JOptionPane.YES_OPTION) {
+                        frame.dispose();
+                    } else {
+                        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                    }
+                    break;
                 }
             }
         }

@@ -1,23 +1,20 @@
 package id.ac.its.kelompok;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
-import java.util.List;
 import java.util.Random;
 
-import javax.swing.*;
+public class BoardZen extends JPanel implements KeyListener, MouseListener, MouseMotionListener {
 
-public class BoardClassic extends JPanel implements KeyListener, MouseListener, MouseMotionListener {
 
-	//Assets
+    //Assets
     private static final long serialVersionUID = 1L;
     private final int boardHeight = 20, boardWidth = 10;
     public static final int blockSize = 30;
     private Color[][] board = new Color[boardHeight][boardWidth];
-    private ShapeClassic[] shapeClassics = new ShapeClassic[7];
-    private static ShapeClassic currentShapeClassic, nextShapeClassic;
+    private ShapeZen[] ShapeZens = new ShapeZen[7];
+    private static ShapeZen currentShapeZen, nextShapeZen;
     private Timer looper;
     private int FPS = 60;
     private int delay = 1000 / FPS;
@@ -32,49 +29,45 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
     private int score = 0;
     private int highScore;
     private String highScoreName;
-
-    public static int lineCleared = 0;
-    public static int treeshold = 0;
     public static int normal = 600;
-    public static int[] speed = {600, 550, 500, 450, 400, 350, 300, 250, 200, 150, 100, 50};
 
     private Color[] colors = {Color.decode("#ed1c24"), Color.decode("#ff7f27"), Color.decode("#fff200"),
-        Color.decode("#22b14c"), Color.decode("#00a2e8"), Color.decode("#a349a4"), Color.decode("#3f48cc")};
+            Color.decode("#22b14c"), Color.decode("#00a2e8"), Color.decode("#a349a4"), Color.decode("#3f48cc")};
     private Random random = new Random();
 
-    public BoardClassic(JFrame frame) {
+    public BoardZen(JFrame frame) {
         setLayout(null);
         // create shapes
-        shapeClassics[0] = new ShapeClassic(new int[][]{
+        ShapeZens[0] = new ShapeZen(new int[][]{
                 {1, 1, 1, 1} // I shape;
         }, this, colors[0]);
 
-        shapeClassics[1] = new ShapeClassic(new int[][]{
+        ShapeZens[1] = new ShapeZen(new int[][]{
                 {1, 1, 1},
                 {0, 1, 0}, // T shape;
         }, this, colors[1]);
 
-        shapeClassics[2] = new ShapeClassic(new int[][]{
+        ShapeZens[2] = new ShapeZen(new int[][]{
                 {1, 1, 1},
                 {1, 0, 0}, // L shape;
         }, this, colors[2]);
 
-        shapeClassics[3] = new ShapeClassic(new int[][]{
+        ShapeZens[3] = new ShapeZen(new int[][]{
                 {1, 1, 1},
                 {0, 0, 1}, // J shape;
         }, this, colors[3]);
 
-        shapeClassics[4] = new ShapeClassic(new int[][]{
+        ShapeZens[4] = new ShapeZen(new int[][]{
                 {0, 1, 1},
                 {1, 1, 0}, // S shape;
         }, this, colors[4]);
 
-        shapeClassics[5] = new ShapeClassic(new int[][]{
+        ShapeZens[5] = new ShapeZen(new int[][]{
                 {1, 1, 0},
                 {0, 1, 1}, // Z shape;
         }, this, colors[5]);
 
-        shapeClassics[6] = new ShapeClassic(new int[][]{
+        ShapeZens[6] = new ShapeZen(new int[][]{
                 {1, 1},
                 {1, 1}, // O shape;
         }, this, colors[6]);
@@ -86,21 +79,19 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
         setPauseAction(pauseButton);
         this.add(pauseButton);
 
-        pauseDialog = new PauseMenu(frame, this, pauseButton);
+//        pauseDialog = new PauseMenu(frame, new BoardClassic(), pauseButton);
 
-        if(ReadSerialScoreClassic.openFile())
-        {
+        if(ReadSerialScoreClassic.openFile()) {
             ReadSerialScoreClassic.readRecords();
             highScore = ReadSerialScoreClassic.getScore();
             highScoreName = ReadSerialScoreClassic.getNama();
-        }
-        else {
+        } else {
             highScore = 0;
             highScoreName = "-";
         }
         System.out.print(highScore);
 
-        looper = new Timer(delay, new GameLooper());
+        looper = new Timer(delay, new BoardZen.GameLooper());
         addKeyListener(this);
         startGame();
     }
@@ -110,7 +101,7 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
         if (gamePaused || gameOver) {
             return;
         }
-        currentShapeClassic.update();
+        currentShapeZen.update();
     }
 
     @Override
@@ -119,7 +110,7 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
 
         g.setColor(Color.DARK_GRAY);
         g.fillRect(0, 0, getWidth(), getHeight());
-        currentShapeClassic.render(g);
+        currentShapeZen.render(g);
         for (int row = 0; row < board.length; row++) {
             for (int col = 0; col < board[row].length; col++) {
 
@@ -130,11 +121,11 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
 
             }
         }
-        g.setColor(nextShapeClassic.getColor());
-        for (int row = 0; row < nextShapeClassic.getCoords().length; row++) {
-            for (int col = 0; col < nextShapeClassic.getCoords()[0].length; col++) {
-                if (nextShapeClassic.getCoords()[row][col] != 0) {
-                    g.fillRect(col * 30 + 320, row * 30 + 50, BoardClassic.blockSize, BoardClassic.blockSize);
+        g.setColor(nextShapeZen.getColor());
+        for (int row = 0; row < nextShapeZen.getCoords().length; row++) {
+            for (int col = 0; col < nextShapeZen.getCoords()[0].length; col++) {
+                if (nextShapeZen.getCoords()[row][col] != 0) {
+                    g.fillRect(col * 30 + 320, row * 30 + 50, BoardZen.blockSize, BoardZen.blockSize);
                 }
             }
         }
@@ -154,9 +145,6 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
         g.drawString("SCORE", WindowGame.WIDTH - 125, WindowGame.HEIGHT / 2);
         g.drawString(score + "", WindowGame.WIDTH - 125, WindowGame.HEIGHT / 2 + 30);
 
-        g.drawString("LEVEL", WindowGame.WIDTH - 125, WindowGame.HEIGHT / 2 + 70);
-        g.drawString(treeshold + "", WindowGame.WIDTH - 125, WindowGame.HEIGHT / 2 + 100);
-
         g.setColor(new Color(1f, 1f, 1f, .25f));
 
         for (int i = 0; i <= boardHeight; i++) {
@@ -172,14 +160,15 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
     public void gameOvered()
     {
         if(gameOver){
-        	if(getScore() > highScore) {
+            if(getScore() > highScore)
+            {
                 String nama = JOptionPane.showInputDialog("Masukkan Nama");
 
                 SerialScoreClassic.openFile();
                 SerialScoreClassic.addRecords(nama,getScore());
                 highScore = getScore();
                 // SerialScoreClassic.closeFile();
-        	}
+            }
         }
     }
 
@@ -189,20 +178,20 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
     }
 
     public void setNextShape() {
-        int index = random.nextInt(shapeClassics.length);
+        int index = random.nextInt(ShapeZens.length);
         int colorIndex = random.nextInt(colors.length);
-        nextShapeClassic = new ShapeClassic(shapeClassics[index].getCoords(), this, colors[colorIndex]);
-        ShapeClassic.normal = BoardClassic.normal;
+        nextShapeZen = new ShapeZen(ShapeZens[index].getCoords(), this, colors[colorIndex]);
+        nextShapeZen.normal = BoardZen.normal;
     }
 
     public void setCurrentShape() {
-        currentShapeClassic = nextShapeClassic;
+        currentShapeZen = nextShapeZen;
         setNextShape();
 
-        for (int row = 0; row < currentShapeClassic.getCoords().length; row++) {
-            for (int col = 0; col < currentShapeClassic.getCoords()[0].length; col++) {
-                if (currentShapeClassic.getCoords()[row][col] != 0) {
-                    if (board[currentShapeClassic.getY() + row][currentShapeClassic.getX() + col] != null) {
+        for (int row = 0; row < currentShapeZen.getCoords().length; row++) {
+            for (int col = 0; col < currentShapeZen.getCoords()[0].length; col++) {
+                if (currentShapeZen.getCoords()[row][col] != 0) {
+                    if (board[currentShapeZen.getY() + row][currentShapeZen.getX() + col] != null) {
                         gameOver = true;
                         gameOvered();
                         break;
@@ -219,23 +208,23 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_UP && !gamePaused) {
-            currentShapeClassic.rotateShape();
+            currentShapeZen.rotateShape();
         }
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            currentShapeClassic.setDeltaX(1);
+            currentShapeZen.setDeltaX(1);
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            currentShapeClassic.setDeltaX(-1);
+            currentShapeZen.setDeltaX(-1);
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            currentShapeClassic.speedUp();
+            currentShapeZen.speedUp();
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            currentShapeClassic.speedDown();
+            currentShapeZen.speedDown();
         }
     }
 
@@ -263,10 +252,6 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
         setNextShape();
         setCurrentShape();
         gameOver = false;
-        ShapeClassic.normal = 600;
-        BoardClassic.normal = 600;
-        BoardClassic.treeshold = 0;
-        BoardClassic.lineCleared = 0;
         looper.start();
     }
 
