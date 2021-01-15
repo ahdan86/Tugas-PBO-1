@@ -97,7 +97,11 @@ public class MainMenu extends JPanel {
                 case "Credits": {
                     //show Credits
                     JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(credits.getParent());
-                    JOptionPane.showMessageDialog(frame, "Axel");
+                    frame.setContentPane(new CreditScene(frame));
+                    frame.setFocusable(true);
+                    frame.revalidate();
+                    frame.getContentPane().requestFocus();
+                    frame.getContentPane().setFocusable(true);
                     break;
                 }
                 case "Exit": {

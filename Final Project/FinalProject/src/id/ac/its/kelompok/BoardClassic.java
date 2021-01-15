@@ -148,7 +148,7 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
 
         g.setFont(new Font("Georgia", Font.BOLD, 20));
 
-        g.drawString("HighScore: " + highScoreName + " " + highScore, WindowGame.WIDTH - 250, WindowGame.HEIGHT / 2 - 30);
+        g.drawString("HighScore: " + highScoreName + " " + highScore, WindowGame.WIDTH - 500, WindowGame.HEIGHT / 2 - 30);
 
         g.drawString("SCORE", WindowGame.WIDTH - 125, WindowGame.HEIGHT / 2);
         g.drawString(score + "", WindowGame.WIDTH - 125, WindowGame.HEIGHT / 2 + 30);
