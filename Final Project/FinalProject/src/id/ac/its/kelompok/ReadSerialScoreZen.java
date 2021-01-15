@@ -6,7 +6,7 @@ import java.io.ObjectInputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class ReadSerialScoreClassic {
+public class ReadSerialScoreZen {
 	private static ObjectInputStream input;
 	public static int highscore;
 	public static String nama;
@@ -15,7 +15,7 @@ public class ReadSerialScoreClassic {
     {
         try {
 			input = new ObjectInputStream(
-					Files.newInputStream(Paths.get("ScoreClassic.ser")));
+					Files.newInputStream(Paths.get("ScoreZen.ser")));
 			return true;
 		} catch (IOException ioException) {
 			System.err.println("Error opening file");

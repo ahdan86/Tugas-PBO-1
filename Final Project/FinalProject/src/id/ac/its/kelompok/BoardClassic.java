@@ -176,8 +176,9 @@ public class BoardClassic extends JPanel implements KeyListener, MouseListener, 
 
                 SerialScoreClassic.openFile();
                 SerialScoreClassic.addRecords(nama,getScore());
+                highScoreName = nama;
                 highScore = getScore();
-                // SerialScoreClassic.closeFile();
+
         	}
         }
     }

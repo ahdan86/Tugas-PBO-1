@@ -5,14 +5,14 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.IOException;
 
-public class SerialScoreClassic{
+public class SerialScoreZen{
     private static ObjectOutputStream output;
 
     public static void openFile()
     {
         try {
             output = new ObjectOutputStream(
-                    Files.newOutputStream(Paths.get("ScoreClassic.ser")));
+                    Files.newOutputStream(Paths.get("ScoreZen.ser")));
         }
         catch (IOException ioException){
             System.err.println("Error opening file. Termianting");

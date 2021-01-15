@@ -2,16 +2,16 @@ package id.ac.its.kelompok;
 
 import java.io.Serializable;
 
-public class ScoreClassic implements Serializable 
+public class Score implements Serializable 
 {
     private String nama;
     private int score;
 
-    public ScoreClassic() {
+    public Score() {
         this("", 0);
     }
 
-    public ScoreClassic(String nama, int score) {
+    public Score(String nama, int score) {
         this.nama = nama;
         this.score = score;
     }

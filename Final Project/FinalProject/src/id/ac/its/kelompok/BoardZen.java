@@ -80,10 +80,10 @@ public class BoardZen extends JPanel implements KeyListener, MouseListener, Mous
 
         pauseDialog = new PauseMenuZen(frame, this, pauseButton);
 
-        if(ReadSerialScoreClassic.openFile()) {
-            ReadSerialScoreClassic.readRecords();
-            highScore = ReadSerialScoreClassic.getScore();
-            highScoreName = ReadSerialScoreClassic.getNama();
+        if(ReadSerialScoreZen.openFile()) {
+            ReadSerialScoreZen.readRecords();
+            highScore = ReadSerialScoreZen.getScore();
+            highScoreName = ReadSerialScoreZen.getNama();
         } else {
             highScore = 0;
             highScoreName = "-";
@@ -163,10 +163,10 @@ public class BoardZen extends JPanel implements KeyListener, MouseListener, Mous
             {
                 String nama = JOptionPane.showInputDialog("Masukkan Nama");
 
-                SerialScoreClassic.openFile();
-                SerialScoreClassic.addRecords(nama,getScore());
+                SerialScoreZen.openFile();
+                SerialScoreZen.addRecords(nama,getScore());
+                highScoreName = nama;
                 highScore = getScore();
-                // SerialScoreClassic.closeFile();
             }
         }
     }
