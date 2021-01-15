@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 
 public class MainMenu extends JPanel {
 
@@ -13,12 +14,15 @@ public class MainMenu extends JPanel {
     private int areaHeight;
     private final JButton playClassic = new JButton("Classic");
     private final JButton playZen = new JButton("Zen");
-    private final JButton playChallenge = new JButton("Challenge");
-    private final JButton score = new JButton("Score");
     private final JButton credits = new JButton("Credits");
     private final JButton exit = new JButton("Exit");
     private final int wButton;
     private final int hButton;
+    private BufferedImage title;
+    private int highScoreClassic;
+    private int highScoreZen;
+    private String highScoreNameZen;
+    private String highScoreNameClassic;
 
     public MainMenu(int width, int height) {
         this.areaWidth = width;
@@ -28,17 +32,35 @@ public class MainMenu extends JPanel {
         this.setPreferredSize(new Dimension(areaWidth, areaHeight));
         setLayout(null);
 
-        playClassic.setBounds(((areaWidth/2) - (wButton/2)), 133, wButton, hButton);
-        playZen.setBounds(((areaWidth/2) - (wButton/2)), 203, wButton, hButton);
-        playChallenge.setBounds(((areaWidth/2) - (wButton/2)), 273, wButton, hButton);
-        score.setBounds(((areaWidth/2) - (wButton/2)), 343, wButton, hButton);
-        credits.setBounds(((areaWidth/2) - (wButton/2)), 413, wButton, hButton);
-        exit.setBounds(((areaWidth/2) - (wButton/2)), 483, wButton, hButton);
+        title = ImageLoader.loadImage("/tetris.png");
+        
+        if(ReadSerialScoreClassic.openFile())
+        {
+            ReadSerialScoreClassic.readRecords();
+            highScoreClassic = ReadSerialScoreClassic.getScore();
+            highScoreNameClassic = ReadSerialScoreClassic.getNama();
+        }
+        else {
+            highScoreClassic = 0;
+            highScoreNameClassic = "-";
+        }
+
+        if(ReadSerialScoreZen.openFile()) {
+            ReadSerialScoreZen.readRecords();
+            highScoreZen = ReadSerialScoreZen.getScore();
+            highScoreNameZen = ReadSerialScoreZen.getNama();
+        } else {
+            highScoreZen = 0;
+            highScoreNameZen = "-";
+        }
+
+        playClassic.setBounds(((areaWidth/2) - (wButton/2) - 230), 413, wButton, hButton);
+        playZen.setBounds(((areaWidth/2) - (wButton/2) - 80), 413, wButton, hButton);
+        credits.setBounds(((areaWidth/2) - (wButton/2) + 70), 413, wButton, hButton);
+        exit.setBounds(((areaWidth/2) - (wButton/2) + 220), 413, wButton, hButton);
 
         this.add(playClassic);
         this.add(playZen);
-        this.add(playChallenge);
-        this.add(score);
         this.add(credits);
         this.add(exit);
 
@@ -46,15 +68,11 @@ public class MainMenu extends JPanel {
         ButtonHandler handler = new ButtonHandler();
         playClassic.addActionListener(handler);
         playZen.addActionListener(handler);
-        playChallenge.addActionListener(handler);
-        score.addActionListener(handler);
         credits.addActionListener(handler);
         exit.addActionListener(handler);
 
         setHover(playClassic);
         setHover(playZen);
-        setHover(playChallenge);
-        setHover(score);
         setHover(credits);
         setHover(exit);
     }
@@ -64,6 +82,12 @@ public class MainMenu extends JPanel {
         super.paintComponent(g);
         g.setColor(Color.DARK_GRAY);
         g.fillRect(0, 0, getWidth(), getHeight());
+        g.drawImage(title, WindowGame.WIDTH/2 - 135 ,150,null);
+        
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Georgia", Font.BOLD, 30));
+        g.drawString("HighScore Classic Mode: " + highScoreNameClassic + " " + highScoreClassic, 20, 550);
+        g.drawString("HighScore Zen Mode: " + highScoreNameZen + " " + highScoreZen, 20, 600);
     }
 
     public class ButtonHandler implements ActionListener {
@@ -87,11 +111,6 @@ public class MainMenu extends JPanel {
                     frame.revalidate();
                     frame.getContentPane().requestFocus();
                     frame.getContentPane().setFocusable(true);
-                    break;
-                }
-                case "Score": {
-                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(score.getParent());
-
                     break;
                 }
                 case "Credits": {

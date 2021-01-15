@@ -144,6 +144,8 @@ public class BoardZen extends JPanel implements KeyListener, MouseListener, Mous
         g.drawString("SCORE", WindowGame.WIDTH - 125, WindowGame.HEIGHT / 2);
         g.drawString(score + "", WindowGame.WIDTH - 125, WindowGame.HEIGHT / 2 + 30);
 
+        g.drawString("Next Shape", 310 , 150 );
+
         g.setColor(new Color(1f, 1f, 1f, .25f));
 
         for (int i = 0; i <= boardHeight; i++) {
