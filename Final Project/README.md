@@ -35,7 +35,7 @@ Class ini digunakan untuk load gambar yang diperlukan nantinya oleh class lain d
 JPanel untuk menampilkan developer game ini.
 
 
-Untuk Class `ShapeZen` dan `PauseMenuZen` sama seperti varian Classic nya hanya berbeda untuk variabel board di dalam classnya bertipe `BoardZen`.
+Untuk Class `ShapeZen` dan `PauseMenuZen` sama seperti varian Classic nya hanya berbeda untuk variabel board di dalam classnya bertipe `BoardZen`. Adapun perbedaan project ini dengan referensi adalah pada referensi kita mengambil logic untuk melakukan collision detection, cara mendefinisikan bentuk shape, cara mengisi boardnya, cara untuk merotate shape. Intinya kita mengambil logic game tetris nya saja. Sedangkan untuk class dan logic lainnya kita implementasikan sendiri, seperti untuk membuat score, main menu, pause dialog, scoring system, credit, mode game dan lainnya.
 
 ## Diagram
 ![Gambar Diagram](DiagramFP.png)
