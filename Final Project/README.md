@@ -37,7 +37,18 @@ JPanel untuk menampilkan developer game ini.
 
 Untuk Class `ShapeZen` dan `PauseMenuZen` sama seperti varian Classic nya hanya berbeda untuk variabel board di dalam classnya bertipe `BoardZen`. Adapun perbedaan project ini dengan referensi adalah pada referensi kita mengambil logic untuk melakukan collision detection, cara mendefinisikan bentuk shape, cara mengisi boardnya, cara untuk merotate shape. Intinya kita mengambil logic game tetris nya saja. Sedangkan untuk class dan logic lainnya kita implementasikan sendiri, seperti untuk membuat score, main menu, pause dialog, scoring system, credit, mode game dan lainnya.
 
+### Serializable Scoring
+Di sistem serializable scoring terdapat class `ReadSerialScoreClassic`, `ReadSerialScoreZen`, `Score`, `SerialScoreClassic`, `SerialScoreZen`. Pada class bagian `SerialScoreClassic` dan `SerialScoreZen` berfungsi sebagai sistem penyimpan file untuk nama dari highscore board. Jadi board akan pass nama dan highscore ke Serial Score lalu akan menyimpannya di sebuah file. Pada bagian class `ReadSerialScoreClassic` dan `ReadSerialScoreZen` berfungsi sebagai pembaca dari file yang telah disimpan agar nantinya score yang telah disimpan akan ditampilkan di game nya. 
+
+Class `Score` berfungsi sebagai objek yang nantinya bagian Serial dan ReadSerial akan menyimpan & membaca "objek" dalam file tsb sehingga tipe data juga tersimpan dan dapat terbaca. Class `Score` mengimplementasikan Serializable.
+
+## Gambar Game
+![Gambar Game 1](GambarGame (1).png)
+![Gambar Game 2](GambarGame (2).png)
+![Gambar Game 3](GambarGame (3).png)
 ## Diagram
 ![Gambar Diagram](DiagramFP.png)
 ## Link Referensi
 [Link Referensi Pembuatan Game Tetris](https://www.youtube.com/watch?v=_U0Io6Utf98&list=PLOgQJY7VjpBRpszgw5PfuJlOUQgIVMz5c)
+## Link Youtube
+[Link Referensi Pembuatan Game Tetris]()
