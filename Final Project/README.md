@@ -37,7 +37,7 @@ JPanel untuk menampilkan developer game ini.
 
 Untuk Class `ShapeZen` dan `PauseMenuZen` sama seperti varian Classic nya hanya berbeda untuk variabel board di dalam classnya bertipe `BoardZen`.
 
-## Diagram (Sementara)
-![Gambar Diagram](DiagramFPSementara.png)
+## Diagram
+![Gambar Diagram](DiagramFP.png)
 ## Link Referensi
 [Link Referensi Pembuatan Game Tetris](https://www.youtube.com/watch?v=_U0Io6Utf98&list=PLOgQJY7VjpBRpszgw5PfuJlOUQgIVMz5c)
