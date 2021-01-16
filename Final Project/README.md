@@ -51,4 +51,4 @@ Class `Score` berfungsi sebagai objek yang nantinya bagian Serial dan ReadSerial
 ## Link Referensi
 [Link Referensi Pembuatan Game Tetris](https://www.youtube.com/watch?v=_U0Io6Utf98&list=PLOgQJY7VjpBRpszgw5PfuJlOUQgIVMz5c)
 ## Link Youtube
-[Link Referensi Pembuatan Game Tetris](https://youtu.be/XnjQAsRNEiE)
+[Link Presentasi Game Tetris](https://youtu.be/XnjQAsRNEiE)
