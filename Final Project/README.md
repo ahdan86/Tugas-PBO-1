@@ -43,9 +43,9 @@ Di sistem serializable scoring terdapat class `ReadSerialScoreClassic`, `ReadSer
 Class `Score` berfungsi sebagai objek yang nantinya bagian Serial dan ReadSerial akan menyimpan & membaca "objek" dalam file tsb sehingga tipe data juga tersimpan dan dapat terbaca. Class `Score` mengimplementasikan Serializable.
 
 ## Gambar Game
-![Gambar Game 1](GambarGame(1).png)
-![Gambar Game 2](GambarGame(2).png)
-![Gambar Game 3](GambarGame(3).png)
+![Gambar Game 1](GambarGame3.png)
+![Gambar Game 2](GambarGame2.png)
+![Gambar Game 3](GambarGame1.png)
 ## Diagram
 ![Gambar Diagram](DiagramFP.png)
 ## Link Referensi
